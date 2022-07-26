@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qwertyui</title>
+    <style>
+        table{
+            border: 5px solid black;
+            border-collapse: collapse;
+        }
+
+        td{
+            width: 50px;
+            height: 50px;
+        }
+
+        h3{
+            font-family: "Open Sans", sans-serif;
+        }
+
+        .button-54 {
+            font-family: "Open Sans", sans-serif;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #000;
+            cursor: pointer;
+            border: 3px solid;
+            padding:  5px 70px 5px 70px;
+            box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+            margin: 20px 0 0 0;
+            position: relative;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-54:active {
+            box-shadow: 0px 0px 0px 0px;
+            top: 5px;
+            left: 5px;
+        }
+
+        input[type=text] {
+            border: 2px solid black;
+            border-radius: 4px;
+            padding: 5px 7px 5px 7px;
+        }
+
+        .black{
+            background-color:black;
+        }
+
+        .black:hover{
+            background-color:gray;
+        }
+
+        .white{
+            background-color:white;
+        }
+
+        .white:hover{
+            background-color:gray;
+        }
+
+        /* #box1{
+            margin :auto !important;
+        } */
+    </style>
+</head>
+<body>
+    <div style="display:flex;justify-content: center;margin-top: 100px;">
+        <div>
+            <h3>Enter the no of rows<em> </em><input style="margin-left: 150px;" type="text" id="row"/></h3><br/>
+            <h3>Enter the no of columns<em> </em><input style="margin-left: 115px;" type="text" id="col"/></h3><br/>
+            <h3>Should start with white or black ?<em> </em><input style="margin-left: 30px;" type="text" id="color"/></h3><br/>
+        </div>
+    </div>
+    <div style="display:flex;justify-content: center;">
+        <button class="button-54" onclick="createTable()"><b>SUBMIT</b></button>
+    </div>
+    <div style='display:flex;justify-content: center;margin-top: 80px;'>
+        <div id="box1"></div>
+        <div id="box2"></div>
+    </div>
+    <script>
+        function createTable()
+        {
+            var row = document.getElementById("row").value;
+            var col = document.getElementById("col").value;
+            var color = document.getElementById("color").value;
+            console.log(row, col);
+            var x = "<table>";
+
+            if(color=="white")
+            {
+                for(var i=0; i<row; i++)
+                {
+                    x+= "<tr>";
+                    for(var j=0; j<col; j++)
+                    {
+                        if((i+j)%2==1) x += "<td class='black'></td>";
+                        else x += "<td class='white'></td>";
+                    }
+                    x+="</tr>"
+                }
+                x+="</table>";
+                document.getElementById("box1").innerHTML = x;
+            }
+            else
+            {
+                for(var i=0; i<row; i++)
+                {
+                    x+= "<tr>";
+                    for(var j=0; j<col; j++)
+                    {
+                        if((i+j)%2==0) x += "<td class='black'></td>";
+                        else x += "<td class='white'></td>";
+                    }
+                    x+="</tr>"
+                }
+                x+="</table>";
+                // document.getElementById("box").innerHTML = x;
+            }
+
+            x +="<table style='border:0;text-align:center;'><tr>";   
+
+            let q = col + 65;
+            console.log(q);            
+            for(let l=65;l<(parseInt(col)+65);l++)
+            {
+                x+= "<td style='width:50px;height:50px;'>"+String.fromCharCode(l)+"</td>"
+            }
+            x+="</tr></table>";
+            document.getElementById("box1").innerHTML = x;
+
+            var z="<table style='border:0;text-align:center;'>";
+            for(var m=1;m<=row;m++)
+            {
+                z += "<tr><td>"+m+"</td></tr>";
+            }
+            z+="</table>";
+            document.getElementById("box2").innerHTML = z;
+        }
+
+    </script>
+</body>
+</html>
+
+<!-- HTML !
+<button class="button-54" role="button">Button 54</button> -->
+
+<!-- .button-54 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-54:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+
+@media (min-width: 768px) {
+  .button-54 {
+    padding: 0.25em 0.75em;
+  }
+} -->
